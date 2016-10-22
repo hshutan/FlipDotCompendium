@@ -19,12 +19,13 @@ This is a collection of information related to the Mega Max 3000 series of Flip 
 The information in this section is regarding the protocol-based projects and other general sign information.
 
 #### Logic Connection Diagram
-The diagram below is used with flipdotSoftwaregfx or flipdotSoftware, this is a known working configuration. The left connector is either of the circular connectors (they are the same pin out) on the sign. *Please note the orientation of the circular connector.* The middle device is a no-name brand TTL to RS-485, and the device on the right is a Teensy 3.2 microcontroller.
+The diagram below is used with [flipdotSoftwaregfx](https://github.com/hshutan/flipdotSoftwareDrivergfx) or [flipdotSoftware](https://github.com/hshutan/flipdotSoftwareDriver), this is a known working configuration. The left connector is either of the two circular connectors on the sign (these connectors are the same pin out). *Please note the orientation of the circular connector.* The middle device is a no-name brand TTL to RS-485 converter, and the device on the right is a [Teensy 3.2](http://pjrc.com/) microcontroller. A Teensy 3.2 is not required, however a microcontroller with similar RAM and CPU should be used.
 
 ![Connection Diagram](https://s16.postimg.org/63xtuotvp/Connection_Diagram_2.png)
 
 #### Power Connection Diagram
-The diagram below can be used to wire up power to the sign. Please note the orientation of the circular connector. The sign draws all current through the 24vDC supply. The 12vDC connections are only signal connections, no current draw. The following information will help you select a power supply for a Luminator Mega Max 3000 98x16 front sign:
+The diagram below can be used to wire up power to the sign. *Please note the orientation of the circular connector.* The sign draws all current through the 24vDC supply. The two 12vDC pins are only signal connections, no current draw. The following information will help you select a power supply for a Luminator Mega Max 3000 98x16 front sign:
+
 * Current draw at idle: 210mA at 24 volts
 * Current draw during flipping: 2.5 Amps at 24 volts
 * Current draw of LEDs alone: 2 Amps at 24 volts
@@ -36,17 +37,17 @@ The diagram below can be used to wire up power to the sign. Please note the orie
 
 #### Sign ID Information
 
-Typically there are multiple signs all communicating on a shared line ([RS-485](https://en.wikipedia.org/wiki/RS-485)). Thus a method of setting a sign's ID exists and would be applicable to configure in a real-world use of multiple signs. The protocol-based projects listed above rely on the sign being configured to sign ID 6.
+Typically there are multiple signs communicating on a shared [RS-485](https://en.wikipedia.org/wiki/RS-485) bus. Thus a method of setting a sign's unique ID exists, and would be applicable to configure in a real-world use of multiple signs. The protocol-based projects listed above rely on the sign being configured to sign ID 6 and do not support multiple signs on a single RS-485 bus.
 
 ##### How to set Sign ID to 6
 
-For the code in my protocol-based projects to work, set the sign's ID to = 6. To do this, turn dipswitches 6 and 7 both ON as seen in the image below. In the image: up is off, and **DOWN** is **ON**. *Do not adjust the sign ID with power applied to the sign.*
+For the code in the protocol-based projects to work, set the sign's ID to = **6**. To do this, turn dipswitches 6 and 7 both **ON** as seen in the image below. In the image: up is off, and **DOWN** is **ON**. *Do not adjust the sign ID with power applied to the sign.*
 
 ![signid6.png](https://s10.postimg.org/uqrxxkwvd/signid6.png)
 
 ##### How to set Sign IDs in General
 
-The Mega Max 3000 series of signs use dipswitches to set the sign ID. The ID is encoded in binary. Look at the table below to see example settings for various sign IDs. Cross reference the row for sign ID 6 with the image above to see how the on/off states correlate. *Do not adjust the sign ID with power applied to the sign.*
+The Mega Max 3000 series of signs use dipswitches to set the sign ID. The ID is encoded in binary. Look at the table below to see example settings for various sign IDs. Cross reference the sign ID 6 row with the image above to see how the on/off states correlate. *Do not adjust the sign ID with power applied to the sign.*
 
 | Switch 1 | Switch 2 | Switch 3 | Switch 4 | Switch 5 | Switch 6 | Switch 7 | Switch 8 |  Resulting Sign ID  |
 |:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:-------------------:|
@@ -62,7 +63,11 @@ The Mega Max 3000 series of signs use dipswitches to set the sign ID. The ID is 
 
 ##### Sign Test Mode
 
-Somewhat interesting is the test mode seen in the table above. This is an incredibly useful way to see if a sign is operating properly. As noted above, remove all power from the sign, set the dipswitches to test mode, then apply power to the sign (24vDC and 12vDC to appropriate connections).
+Somewhat interesting is the test mode option seen in the table above. This is a useful way to see if a sign is operating properly independent of other variables.
+
+1. Remove all power from the sign
+2. Set the dipswitches to test mode as indicated above
+3. Apply power to the sign (24vDC and 12vDC to appropriate connections)
 
 #### Protocol Information
 
