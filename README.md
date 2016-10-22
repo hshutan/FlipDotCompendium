@@ -95,6 +95,18 @@ Each command line sent to the sign must contain a checksum. The checksum is an "
 | 10000000010A0000FFFFFFFFFFFFFFFFFFFFFFFF 	|  F1 	| :10000000010A0000FFFFFFFFFFFFFFFFFFFFFFFFF1 	|
 
 
+##### Bit/Byte Order
+
+When sending images, the bit order, or byte order must be constructed in the below specific fashion.
+
+![bitorder.png](https://s10.postimg.org/mywdsdrrt/bitorder.png)
+
+This example image shows the order of bits for the first two columns of a sign. When [sending an image to the sign](#sending-an-image---all-dots-on) you must correctly order the bits, and then represent them as HEX in ASCII.
+
+As an over simplified example, imagine the first two columns pictured above are alternating on/off dots ``01010101010101010101010101010101`` this binary would be converted to and sent as ``55555555`` in ASCII. Remember not to send raw ``0x55 0x55 0x55 0x55`` HEX out the serial port, it must be represented as ASCII. Meaning the data that actually gets sent out over serial is twice as much: ``0x35 0x35 0x35 0x35 0x35 0x35 0x35 0x35`` This is because MODBUS ASCII sacrifices performance for human readability.
+
+
+
 ##### Sign Init
 
 These commands **need** to be sent to the sign at least once after it is initially enabled and powered up (having both 24vDC and 12vDC correctly applied).
