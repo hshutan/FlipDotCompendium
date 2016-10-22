@@ -5,12 +5,12 @@ This is a collection of information related to the Mega Max 3000 series of Flip 
 ### Index
 
 * Protocol-based Projects
-  1. flipdotSoftwaregfx - An Arduino based project that communicates with a 98x16 Luminator Mega Max 3000 sign via RS-485 MODBUS ASCII and makes use of the Adafruit_GFX library for easy text/graphics output.
-  2. flipdotSoftware - Same of the above but without the Adafruit_GFX. Bare bones control.
+  1. [flipdotSoftwaregfx](https://github.com/hshutan/flipdotSoftwareDrivergfx) - An Arduino based project that communicates with a 98x16 Luminator Mega Max 3000 sign via RS-485 MODBUS ASCII and makes use of the Adafruit_GFX library for easy text/graphics output.
+  2. [flipdotSoftware](https://github.com/hshutan/flipdotSoftwareDriver) - Same of the above but without the Adafruit_GFX. Bare bones control.
 * Hardware-based Project
-  1. 45x7 Flipdot Sign - Unlike the above projects, this project involved reverse engineering the electromechanical hardware and designing a custom driver board for one of the 45x7 panels inside a 90x7 Mega Max 3000 side sign.
+  1. [45x7 Flipdot Sign](https://github.com/hshutan/45x7-flipdot-controller) - Unlike the above projects, this project involved reverse engineering the electromechanical hardware and designing a custom driver board for one of the 45x7 panels inside a 90x7 Mega Max 3000 side sign.
 * [MODBUS ASCII over RS-485 and Connection Information for the Protocol-based projects above](#modbus-ascii-over-rs-485-and-connection-information)
-* Legal Note
+* [Legal Note](#legal-note)
 
 
 ##
