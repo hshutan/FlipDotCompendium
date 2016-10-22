@@ -9,7 +9,7 @@ This is a collection of information related to the Mega Max 3000 series of Flip 
   2. flipdotSoftware - Same of the above but without the Adafruit_GFX. Bare bones control.
 * Hardware-based Project
   1. 45x7 Flipdot Sign - Unlike the above projects, this project involved reverse engineering the electromechanical hardware and designing a custom driver board for one of the 45x7 panels inside a 90x7 Mega Max 3000 side sign.
-* MODBUS ASCII over RS-485 and Connection Information for the Protocol-based projects above
+* [MODBUS ASCII over RS-485 and Connection Information for the Protocol-based projects above](#modbus-ascii-over-rs-485-and-connection-information)
 * Legal Note
 
 
