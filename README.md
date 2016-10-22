@@ -134,7 +134,7 @@ These commands can be sent to the sign before you cut all power. They will instr
 
 ##### Sending an Image - All Dots On
 
-These commands will send an example image of 98x16 pixels into the sign's memory and tell the sign to display the image.
+These commands will send an example image, 98x16 pixels with all dots ON, into the sign's memory and finally tell the sign to display the image. The sections of zeros are pixels that the 98x16 sign does not possess, are invisible, and can be left turned off.
 
 ```
 :01000603A254
