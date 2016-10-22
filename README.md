@@ -12,8 +12,7 @@ This is a collection of information related to the Mega Max 3000 series of Flip 
 * [MODBUS ASCII over RS-485 and Connection Information for the Protocol-based projects above](#modbus-ascii-over-rs-485-and-connection-information)
 * [Legal Note](#legal-note)
 
-
-##
+---
 
 ### MODBUS ASCII over RS-485 and Connection Information
 
@@ -98,17 +97,63 @@ Each command line sent to the sign must contain a checksum. The checksum is an "
 
 ##### Sign Init
 
+These commands **need** to be sent to the sign at least once after it is initially enabled and powered up (having both 24vDC and 12vDC correctly applied).
+
+```
+:01000502FFF9
+:01000602FFF8
+:01000603A155
+:100000000447000F101C1C1C1C1000000000000006
+:00000101FE
+:0100060200F7
+```
+
 ##### Sign Close
+
+These commands can be sent to the sign before you cut all power. They will instruct the sign to do a hard OFF write to every single dot. Note that instead of this command, removing 12vDC sign enable power while maintaining 24vDC power will also cause the sign to do this same shutdown procedure.
+
+```
+:01000603A94D
+:01000603AA4C
+:01007F02FF7F
+:0100060255A2
+:01000603A650
+```
 
 ##### Sending an Image - All Dots On
 
+These commands will send an example image of 98x16 pixels into the sign's memory and tell the sign to display the image.
+
+```
+:01000603A254
+:10000000010A0000FFFFFFFFFFFFFFFFFFFFFFFFF1
+:10001000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0
+:1000200000000000000000000000000000000000D0
+:10003000000000000000000000000000FFFFFFFFC4
+:10004000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC0
+:10005000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB0
+:10006000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA0
+:10007000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF90
+:10008000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF80
+:10009000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF70
+:1000A000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF60
+:1000B000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF50
+:1000C000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF40
+:1000D000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF30
+:1000E000FFFFFFFF00000000000000000000000014
+:00000F01F0
+:0100060200F7
+:0100060600F3
+:0100060200F7
+:01000603A94D
+```
 
 ##### Color Coded Example - All Dots On
-This is the same as the above example with color coding added to highlight sections of the commands.
+This image is the same as the above example with the addition of color coding to highlight sections of the commands.
 
 ![Example Dots All On.png](https://s3.postimg.org/klvazxiwz/Example_Dots_All_On.png)
 
-##
+---
 
 ### Legal Note
 Please note that the various flip dot products and technologies discussed are both copyright and also property of their respective owners. The communication protocol is not mine. The information in these home hobby projects may not be used for profit or commercial uses of any kind. Any for profit or commercial use should be performed through manufacturer approved retail channels.
