@@ -1,6 +1,6 @@
 # Flip Dot Sign Compendium
 
-This is a collection of information related to the Mega Max 3000 series of Flip Dot signs produced by Luminator. Specifically you will find the content is tailored to a 98x16 MegaMax 3000 front sign that I own. Note that various modifications would be needed to drive other dimension signs, such as the more common 112x16 versions.
+This is a collection of information related to the Max 3000 series of Flip Dot signs produced by Luminator. Specifically you will find the content is tailored to a 98x16 Mega Max 3000 front sign that I own. Note that various modifications would be needed to drive other dimension signs, such as the more common 112x16 versions.
 
 ### Index
 
@@ -8,7 +8,7 @@ This is a collection of information related to the Mega Max 3000 series of Flip 
   1. [flipdotSoftwaregfx](https://github.com/hshutan/flipdotSoftwareDrivergfx) - An Arduino based project that communicates with a 98x16 Luminator Mega Max 3000 sign via RS-485 MODBUS ASCII and makes use of the Adafruit_GFX library for easy text/graphics output.
   2. [flipdotSoftware](https://github.com/hshutan/flipdotSoftwareDriver) - Same of the above but without the Adafruit_GFX. Bare bones control.
 * Hardware-based Project
-  1. [45x7 Flipdot Sign](https://github.com/hshutan/45x7-flipdot-controller) - Unlike the above projects, this project involved reverse engineering the electromechanical hardware and designing a custom driver board for one of the 45x7 panels inside a 90x7 Mega Max 3000 side sign.
+  1. [45x7 Flipdot Sign](https://github.com/hshutan/45x7-flipdot-controller) - Unlike the above projects, this project involved reverse engineering the electromechanical hardware and designing a custom driver board for one of the 45x7 panels inside a 90x7 Max 3000 side sign.
 * [MODBUS ASCII over RS-485 and Connection Information for the Protocol-based projects above](#modbus-ascii-over-rs-485-and-connection-information)
 * [Legal Note](#legal-note)
 
@@ -47,7 +47,7 @@ For the code in the protocol-based projects to work, set the sign's ID to = **6*
 
 ##### How to set Sign IDs in General
 
-The Mega Max 3000 series of signs use dipswitches to set the sign ID. The ID is encoded in binary. Look at the table below to see example settings for various sign IDs. Cross reference the sign ID 6 row with the image above to see how the on/off states correlate. *Do not adjust the sign ID with power applied to the sign.*
+The Max 3000 series of signs use dipswitches to set the sign ID. The ID is encoded in binary. Look at the table below to see example settings for various sign IDs. Cross reference the sign ID 6 row with the image above to see how the on/off states correlate. *Do not adjust the sign ID with power applied to the sign.*
 
 | Switch 1 | Switch 2 | Switch 3 | Switch 4 | Switch 5 | Switch 6 | Switch 7 | Switch 8 |  Resulting Sign ID  |
 |:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:-------------------:|
@@ -81,7 +81,7 @@ All command lines end with a newline (specifically must be CRLF). This is not in
 
 Command lines can be of varying length, as long as they are ended with the two character checksum which is performed on all data inbetween the ":" and CRLF.
 
-The sign will reply back to some commands. Due to the nature of RS-485 (it is simplex, only one device can talk at a time), and also due to the MODBUS standards, a pause/delay of 10 milliseconds must be added after each newline (CRLF). This creates a gap where the sign can send its reply if needed, and also the time gap is required by the MODBUS protocol.
+The sign will send replies to many commands. Due to the simplex nature of RS-485, only one device can talk at a time, you cannot send data to the sign while it is replying. Also in certain MODBUS standards, a pause/delay of 10 milliseconds must be added after newline or EOL (CRLF). This delay creates a gap where the sign can send its reply if needed, and also satisfies the time gap required by the MODBUS protocol. The sign will not understand commands without enough EOL delay.
 
 ##### Checksum (LRC)
 
@@ -102,7 +102,7 @@ Each command line sent to the sign must contain a checksum. The checksum is an "
 
 ##### Bit/Byte Order
 
-When sending images, the bit order, or byte order must be constructed in the below specific fashion.
+When sending images to the sign, the bit order, or byte order, must be constructed in the below specific fashion.
 
 ![bitorder.png](https://s10.postimg.org/mywdsdrrt/bitorder.png)
 
