@@ -5,16 +5,16 @@ This is a collection of information related to the Max 3000 series of Flip Dot s
 ### Index
 
 * Protocol-based Projects
-  1. [flipdotSoftwaregfx](https://github.com/hshutan/flipdotSoftwareDrivergfx) - An Arduino based project that communicates with a 98x16 Luminator Mega Max 3000 sign via RS-485 MODBUS ASCII and makes use of the Adafruit_GFX library for easy text/graphics output.
+  1. [flipdotSoftwaregfx](https://github.com/hshutan/flipdotSoftwareDrivergfx) - An Arduino based project that communicates with a 98x16 Luminator Mega Max 3000 sign via RS-485 Modbus ASCII and makes use of the Adafruit_GFX library for easy text/graphics output.
   2. [flipdotSoftware](https://github.com/hshutan/flipdotSoftwareDriver) - Same of the above but without the Adafruit_GFX. Bare bones control.
 * Hardware-based Project
   1. [45x7 Flipdot Sign](https://github.com/hshutan/45x7-flipdot-controller) - Unlike the above projects, this project involved reverse engineering the electromechanical hardware and designing a custom driver board for one of the 45x7 panels inside a 90x7 Max 3000 side sign.
-* [MODBUS ASCII over RS-485 and Connection Information for the Protocol-based projects above](#modbus-ascii-over-rs-485-and-connection-information)
+* [Modbus ASCII over RS-485 and Connection Information for the Protocol-based projects above](#modbus-ascii-over-rs-485-and-connection-information)
 * [Legal Note](#legal-note)
 
 ---
 
-### MODBUS ASCII over RS-485 and Connection Information
+### Modbus ASCII over RS-485 and Connection Information
 
 The information in this section is regarding the protocol-based projects and other general sign information.
 
@@ -73,7 +73,7 @@ Somewhat interesting is the test mode option seen in the table above. This is a 
 
 ##### Overview
 
-The protocol appears to be very similar to standard [MODBUS ASCII](https://en.wikipedia.org/wiki/Modbus). The communication bus is RS-485 at 19200 baud rate. MODBUS and RS-485 are both very common in automotive and harsh electrical environments.
+The protocol appears to be very similar to standard [Modbus ASCII](https://en.wikipedia.org/wiki/Modbus). The communication bus is RS-485 at 19200 baud rate. Modbus and RS-485 are both very common in automotive and harsh electrical environments.
 
 All command lines begin with a ":" character. This character is not included in the checksum calculation.
 
@@ -81,14 +81,14 @@ All command lines end with a newline (specifically must be CRLF). This is not in
 
 Command lines can be of varying length, as long as they are ended with the two character checksum which is performed on all data inbetween the ":" and CRLF.
 
-The sign will send replies to many commands. Due to the simplex nature of RS-485, only one device can talk at a time, you cannot send data to the sign while it is replying. Also in certain MODBUS standards, a pause/delay of 10 milliseconds must be added after newline or EOL (CRLF). This delay creates a gap where the sign can send its reply if needed, and also satisfies the time gap required by the MODBUS protocol. The sign will not understand commands without enough EOL delay.
+The sign will send replies to many commands. Due to the simplex nature of RS-485, only one device can talk at a time, you cannot send data to the sign while it is replying. Also in certain Modbus standards, a pause/delay of 10 milliseconds must be added after newline or EOL (CRLF). This delay creates a gap where the sign can send its reply if needed, and also satisfies the time gap required by the Modbus protocol. The sign will not understand commands without enough EOL delay.
 
 ##### Checksum (LRC)
 
 Each command line sent to the sign must contain a checksum. The checksum is an "LRC" or "8bit 2's Compliment". The below resources are very helpful and show how to calculate the exact two character LRC that the sign expects. All credit goes to the original authors.
 
 * A webpage with an interactive LRC generator: [AnalyseDataHex and See CheckSum8 2s Complement section](http://www.scadacore.com/field-applications/programming-calculators/online-checksum-calculator/)
-* Arudino C++ code: [LRC calculation for MODBUS ASCII Protocol In Arduino](http://anilarduino.blogspot.com/2015/05/lrc-calculation-for-modbus-ascii.html)
+* Arudino C++ code: [LRC calculation for Modbus ASCII Protocol In Arduino](http://anilarduino.blogspot.com/2015/05/lrc-calculation-for-modbus-ascii.html)
 * C# code to generate LRC: [SoapHexBinary class in System.Runtime.Remoting.Metadata.W3cXsd2001](http://stackoverflow.com/questions/12942904/calculate-twos-complement-checksum-of-hexadecimal-string/12943029)
 
 ##### Checksum Examples
@@ -108,7 +108,7 @@ When sending images to the sign, the bit order, or byte order, must be construct
 
 This example image shows the order of bits for the first two columns of a sign. When [sending an image to the sign](#sending-an-image---all-dots-on) you must correctly order the bits, and then represent them as HEX in ASCII.
 
-As an over simplified example, imagine the first two columns pictured above are alternating on/off dots ``01010101010101010101010101010101`` this binary would be converted to and sent as ``55555555`` in ASCII. Remember not to send raw ``0x55 0x55 0x55 0x55`` HEX out the serial port, it must be represented as ASCII. Meaning the data that actually gets sent out over serial is twice as much: ``0x35 0x35 0x35 0x35 0x35 0x35 0x35 0x35`` This is because MODBUS ASCII sacrifices performance for human readability.
+As an over simplified example, imagine the first two columns pictured above are alternating on/off dots ``01010101010101010101010101010101`` this binary would be converted to and sent as ``55555555`` in ASCII. Remember not to send raw ``0x55 0x55 0x55 0x55`` HEX out the serial port, it must be represented as ASCII. Meaning the data that actually gets sent out over serial is twice as much: ``0x35 0x35 0x35 0x35 0x35 0x35 0x35 0x35`` This is because Modbus ASCII sacrifices performance for human readability.
 
 
 
@@ -168,7 +168,7 @@ These commands will send an example image, 98x16 pixels with all dots ON, into t
 ##### Color Coded Example - All Dots On
 This image is the same as the above example with the addition of color coding to highlight sections of the commands.
 
-![Example Dots All On.png](https://s3.postimg.org/klvazxiwz/Example_Dots_All_On.png)
+![Example Dots All On.png](https://s17.postimg.org/gcg0e5zu7/Example_Dots_All_On.png)
 
 ---
 
