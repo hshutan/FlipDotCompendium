@@ -35,6 +35,8 @@ The diagram below can be used to wire up power to the sign. *Please note the ori
 
 ![Power Diagram](https://s10.postimg.org/5ius06k6h/Power_Reqs.png)
 
+Note that the connection diagrams shown here are head-on photos of the 7-pin male connectors. These connectors are found in pairs on Max 3000 systems, both connectors share the same pin outs can either connector or both connectors can be used.
+
 #### Sign ID Information
 
 Typically there are multiple signs communicating on a shared [RS-485](https://en.wikipedia.org/wiki/RS-485) bus. Thus a method of setting a sign's unique ID exists, and would be applicable to configure in a real-world use of multiple signs. The protocol-based projects listed above rely on the sign being configured to sign ID 6 and do not support multiple signs on a single RS-485 bus.
