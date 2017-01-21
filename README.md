@@ -35,7 +35,7 @@ The diagram below can be used to wire up power to the sign. *Please note the ori
 
 ![Power Diagram](https://s10.postimg.org/5ius06k6h/Power_Reqs.png)
 
-Note that the connection diagrams shown here are head-on photos of the 7-pin male connectors. These connectors are found in pairs on Max 3000 systems, both connectors share the same pin outs can either connector or both connectors can be used.
+Note that the connection diagrams shown here are head-on photos of the 7-pin male connectors. These connectors are found in pairs on Max 3000 systems, both connectors share the same pin outs.
 
 #### Sign ID Information
 
