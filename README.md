@@ -21,7 +21,7 @@ The information in this section is regarding the protocol-based projects and oth
 #### Logic Connection Diagram
 The diagram below is used with [flipdotSoftwaregfx](https://github.com/hshutan/flipdotSoftwareDrivergfx) or [flipdotSoftware](https://github.com/hshutan/flipdotSoftwareDriver), this is a known working configuration. The left connector is either of the two circular connectors on the sign (these connectors are the same pin out). *Please note the orientation of the circular connector.* The middle device is a no-name brand TTL to RS-485 converter, and the device on the right is a [Teensy 3.2](http://pjrc.com/) microcontroller. A Teensy 3.2 is not required, however a microcontroller with similar RAM and CPU should be used.
 
-![Connection Diagram](https://s16.postimg.org/63xtuotvp/Connection_Diagram_2.png)
+![Connection Diagram](https://github.com/hshutan/FlipDotCompendium/blob/master/Images/ConnectionDiagram.png)
 
 #### Power Connection Diagram
 The diagram below can be used to wire up power to the sign. *Please note the orientation of the circular connector.* The sign draws all current through the 24vDC supply. The two 12vDC pins are only signal connections, no current draw. The following information will help you select a power supply for a Luminator Mega Max 3000 98x16 front sign:
