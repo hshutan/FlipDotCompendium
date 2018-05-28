@@ -33,7 +33,7 @@ The diagram below can be used to wire up power to the sign. *Please note the ori
 * Suggested power supply capability: at least 7 Amps at 24 volts
 * Suggested in-line fuse on common negative: 5 Amps
 
-![Power Diagram](https://s10.postimg.org/5ius06k6h/Power_Reqs.png)
+![Power Diagram](https://github.com/hshutan/FlipDotCompendium/blob/master/Images/PowerReqs.png)
 
 Note that the connection diagrams shown here are head-on photos of the 7-pin male connectors. These connectors are found in pairs on Max 3000 systems, both connectors share the same pin outs.
 
@@ -45,7 +45,7 @@ Typically there are multiple signs communicating on a shared [RS-485](https://en
 
 For the code in the protocol-based projects to work, set the sign's ID to = **6**. To do this, turn dipswitches 6 and 7 both **ON** as seen in the image below. In the image: up is off, and **DOWN** is **ON**. *Do not adjust the sign ID with power applied to the sign.*
 
-![signid6.png](https://s10.postimg.org/uqrxxkwvd/signid6.png)
+![Sign ID Set to 6](https://github.com/hshutan/FlipDotCompendium/blob/master/Images/SignID6.png)
 
 ##### How to set Sign IDs in General
 
@@ -106,7 +106,7 @@ Each command line sent to the sign must contain a checksum. The checksum is an "
 
 When sending images to the sign, the bit order, or byte order, must be constructed in the below specific fashion.
 
-![bitorder.png](https://s10.postimg.org/mywdsdrrt/bitorder.png)
+![Bitorder Diagram](https://github.com/hshutan/FlipDotCompendium/blob/master/Images/BitOrder.png)
 
 This example image shows the order of bits for the first two columns of a sign. When [sending an image to the sign](#sending-an-image---all-dots-on) you must correctly order the bits, and then represent them as HEX in ASCII.
 
@@ -170,7 +170,7 @@ These commands will send an example image, 98x16 pixels with all dots ON, into t
 ##### Color Coded Example - All Dots On
 This image is the same as the above example with the addition of color coding to highlight sections of the commands.
 
-![Example Dots All On.png](https://s17.postimg.org/gcg0e5zu7/Example_Dots_All_On.png)
+![Example Dots All On.png](https://github.com/hshutan/FlipDotCompendium/blob/master/Images/ExampleDotsAllOn.png)
 
 ---
 
