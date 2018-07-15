@@ -2,16 +2,10 @@
 
 This is a collection of information related to the Mega Max 3000 series of Flip Dot signs produced by Luminator. Specifically you will find that the content includes information on the 98x16 Mega Max 3000 front sign, and the Mega Max 3000 90x7 side sign. There is a more common front sign with a resolution of 112x16, however I do not have specific information on this sign.
 
-### Index
-
-* Protocol-based Projects
+### Projects based on RS-485 Protocol
   1. [98x16 Front Sign with Graphics flipdotSoftwaregfx](https://github.com/hshutan/flipdotSoftwareDrivergfx) - An Arduino based project that communicates with a 98x16 Luminator Mega Max 3000 sign via RS-485 Modbus ASCII and makes use of the Adafruit_GFX library for easy text/graphics output.
   2. [98x16 Front Sign bare control flipdotSoftware](https://github.com/hshutan/flipdotSoftwareDriver) - Same of the above but without the Adafruit_GFX. Bare bones control.
   3. [90x7 Side Sign basic control flipdotSoftwareDriver_90x7_sidesign](https://github.com/hshutan/flipdotSoftwareDriver_90x7_sidesign) - An adaptation of my 98x16 front sign code to be used with a 90x7 side sign.
-* Hardware-based Project
-  1. [45x7 Flipdot Sign](https://github.com/hshutan/45x7-flipdot-controller) - **I don't reccomend this specific project anymore, please use the RS-485 based projects** Unlike the above projects, this project involved reverse engineering the electromechanical hardware and designing a custom driver board for one of the 45x7 panels inside a 90x7 Max 3000 side sign.
-* [Modbus ASCII over RS-485 and Connection Information for the Protocol-based projects above](#modbus-ascii-over-rs-485-and-connection-information)
-* [Legal Note](#legal-note)
 
 ---
 
