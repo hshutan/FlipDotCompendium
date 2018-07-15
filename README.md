@@ -1,6 +1,6 @@
 # Flip Dot Sign Compendium
 
-This is a collection of information related to the Max 3000 series of Flip Dot signs produced by Luminator. Specifically you will find the content is tailored to a 98x16 Mega Max 3000 front sign that I own. Note that various modifications would be needed to drive other dimension signs, such as the more common 112x16 versions.
+This is a collection of information related to the Mega Max 3000 series of Flip Dot signs produced by Luminator. Specifically you will find that the content includes information on the 98x16 Mega Max 3000 front sign, and the Mega Max 3000 90x7 side sign. There is a more common front sign with a resolution of 112x16, however I do not have specific information on this sign.
 
 ### Index
 
@@ -8,7 +8,7 @@ This is a collection of information related to the Max 3000 series of Flip Dot s
   1. [flipdotSoftwaregfx](https://github.com/hshutan/flipdotSoftwareDrivergfx) - An Arduino based project that communicates with a 98x16 Luminator Mega Max 3000 sign via RS-485 Modbus ASCII and makes use of the Adafruit_GFX library for easy text/graphics output.
   2. [flipdotSoftware](https://github.com/hshutan/flipdotSoftwareDriver) - Same of the above but without the Adafruit_GFX. Bare bones control.
 * Hardware-based Project
-  1. [45x7 Flipdot Sign](https://github.com/hshutan/45x7-flipdot-controller) - Unlike the above projects, this project involved reverse engineering the electromechanical hardware and designing a custom driver board for one of the 45x7 panels inside a 90x7 Max 3000 side sign.
+  1. [45x7 Flipdot Sign](https://github.com/hshutan/45x7-flipdot-controller) - **I don't reccomend this specific project anymore, please use the RS-485 based projects** Unlike the above projects, this project involved reverse engineering the electromechanical hardware and designing a custom driver board for one of the 45x7 panels inside a 90x7 Max 3000 side sign.
 * [Modbus ASCII over RS-485 and Connection Information for the Protocol-based projects above](#modbus-ascii-over-rs-485-and-connection-information)
 * [Legal Note](#legal-note)
 
@@ -24,7 +24,7 @@ The diagram below is used with [flipdotSoftwaregfx](https://github.com/hshutan/f
 ![Connection Diagram](https://github.com/hshutan/FlipDotCompendium/blob/master/Images/ConnectionDiagram.png)
 
 #### Power Connection Diagram
-The diagram below can be used to wire up power to the sign. *Please note the orientation of the circular connector.* The sign draws all current through the 24vDC supply. The two 12vDC pins are only signal connections, no current draw. The following information will help you select a power supply for a Luminator Mega Max 3000 98x16 front sign:
+The diagram below can be used to wire up power to any Mega Max 3000 sign. *Please note the orientation of the circular connector.* The sign draws all current through the 24vDC supply. The two 12vDC pins are signal connections, no current draw. The following information will help you select a power supply for a Luminator Mega Max 3000 98x16 front sign. Other signs may require more or less power.
 
 * Current draw at idle: 210mA at 24 volts
 * Current draw during flipping: 2.5 Amps at 24 volts
@@ -39,17 +39,17 @@ Note that the connection diagrams shown here are head-on photos of the 7-pin mal
 
 #### Sign ID Information
 
-Typically there are multiple signs communicating on a shared [RS-485](https://en.wikipedia.org/wiki/RS-485) bus. Thus a method of setting a sign's unique ID exists, and would be applicable to configure in a real-world use of multiple signs. The protocol-based projects listed above rely on the sign being configured to sign ID 6 and do not support multiple signs on a single RS-485 bus.
+Typically there are multiple signs communicating on a shared [RS-485](https://en.wikipedia.org/wiki/RS-485) bus. Thus a method of setting a sign's unique ID exists, and would be applicable to configure in a real-world use of multiple signs. The protocol-based projects listed here rely on the sign being configured to a known sign ID, and do not support multiple signs on a single RS-485 bus.
 
-##### How to set Sign ID to 6
+##### A Note on Sign IDs
 
-For the code in the protocol-based projects to work, set the sign's ID to = **6**. To do this, turn dipswitches 6 and 7 both **ON** as seen in the image below. In the image: up is off, and **DOWN** is **ON**. *Do not adjust the sign ID with power applied to the sign.*
+For the code in the 98x16 front sign protocol-based projects to work, set the sign's ID to = **6**. For the code in the 90x7 side sign protocol-based project to work, set the sign's ID to = **3**. As seen in the example image below, the sign ID is set to **6**. In the image: up is off, and **DOWN** is **ON**. *Do not adjust the sign ID with power applied to the sign.*
 
 ![Sign ID Set to 6](https://github.com/hshutan/FlipDotCompendium/blob/master/Images/SignID6.png)
 
 ##### How to set Sign IDs in General
 
-The Max 3000 series of signs use dipswitches to set the sign ID. The ID is encoded in binary. Look at the table below to see example settings for various sign IDs. Cross reference the sign ID 6 row with the image above to see how the on/off states correlate. *Do not adjust the sign ID with power applied to the sign.*
+The ID is encoded in binary. Look at the table below to see example settings for various sign IDs. *Do not adjust the sign ID with power applied to the sign.*
 
 | Switch 1 | Switch 2 | Switch 3 | Switch 4 | Switch 5 | Switch 6 | Switch 7 | Switch 8 |  Resulting Sign ID  |
 |:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:-------------------:|
@@ -65,7 +65,7 @@ The Max 3000 series of signs use dipswitches to set the sign ID. The ID is encod
 
 ##### Sign Test Mode
 
-Somewhat interesting is the test mode option seen in the table above. This is a useful way to see if a sign is operating properly independent of other variables.
+Somewhat interesting is the test mode option seen in the table above. This is a useful way to see if a sign is operating properly independent of other variables, like communications protocols, or custom software.
 
 1. Remove all power from the sign
 2. Set the dipswitches to test mode as indicated above
@@ -102,9 +102,9 @@ Each command line sent to the sign must contain a checksum. The checksum is an "
 | 10000000010A0000FFFFFFFFFFFFFFFFFFFFFFFF 	|  F1 	| :10000000010A0000FFFFFFFFFFFFFFFFFFFFFFFFF1 	|
 
 
-##### Bit/Byte Order
+##### Bit/Byte Order for the 98x16 Front Sign
 
-When sending images to the sign, the bit order, or byte order, must be constructed in the below specific fashion.
+When sending images to the 98x16 sign, the bit order, or byte order, must be constructed in the below specific fashion.
 
 ![Bitorder Diagram](https://github.com/hshutan/FlipDotCompendium/blob/master/Images/BitOrder.png)
 
@@ -114,7 +114,7 @@ As an over simplified example, imagine the first two columns pictured above are 
 
 
 
-##### Sign Init
+##### Sign Init 98x16 Front Sign
 
 These commands **need** to be sent to the sign at least once after it is initially enabled and powered up (having both 24vDC and 12vDC correctly applied).
 
@@ -127,7 +127,20 @@ These commands **need** to be sent to the sign at least once after it is initial
 :0100060200F7
 ```
 
-##### Sign Close
+##### Sign Init 90x7 Side Sign
+
+These commands **need** to be sent to the sign at least once after it is initially enabled and powered up (having both 24vDC and 12vDC correctly applied).
+
+```
+:01000502FFF9
+:01000602FFF8
+:01000303A158
+:1000000004200006071E1E1E00080000000000005D
+:00000101FE
+:0100030200FA
+```
+
+##### Sign Close 98x16 Front Sign
 
 These commands can be sent to the sign before you cut all power. They will instruct the sign to do a hard OFF write to every single dot. Note that instead of this command, removing 12vDC sign enable power while maintaining 24vDC power will also cause the sign to do this same shutdown procedure.
 
@@ -139,7 +152,7 @@ These commands can be sent to the sign before you cut all power. They will instr
 :01000603A650
 ```
 
-##### Sending an Image - All Dots On
+##### Sending an Image - 98x16 Front Sign - All Dots On
 
 These commands will send an example image, 98x16 pixels with all dots ON, into the sign's memory and finally tell the sign to display the image. The sections of zeros are pixels that the 98x16 sign does not possess, are invisible, and can be left turned off.
 
@@ -167,10 +180,31 @@ These commands will send an example image, 98x16 pixels with all dots ON, into t
 :01000603A94D
 ```
 
-##### Color Coded Example - All Dots On
+##### Color Coded Example - 98x16 Front Sign - All Dots On
 This image is the same as the above example with the addition of color coding to highlight sections of the commands.
 
 ![Example Dots All On.png](https://github.com/hshutan/FlipDotCompendium/blob/master/Images/ExampleDotsAllOn.png)
+
+
+##### Sending an Image - 90x7 Side Sign - All Dots On
+
+These commands will send an example image, 90x7 pixels with all dots ON, into the sign's memory and finally tell the sign to display the image.
+
+```
+:01000303A257
+:1000000001100000FFFFFFFFFFFFFFFFFFFFFFFFEB
+:10001000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0
+:10002000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE0
+:10003000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD0
+:10004000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC0
+:10005000FFFFFFFFFFFFFFFFFFFFFFFFFFFF0000AE
+:00000C01F3
+:0100030200FA
+:0100030600F6
+:0100030200FA
+:01000303A950
+```
+
 
 ---
 
