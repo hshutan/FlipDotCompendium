@@ -49,6 +49,7 @@ The ID is encoded in binary. Look at the table below to see example settings for
 | Switch 1 | Switch 2 | Switch 3 | Switch 4 | Switch 5 | Switch 6 | Switch 7 | Switch 8 |  Resulting Sign ID  |
 |:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:-------------------:|
 |    **ON**   |     off    |     off    |     off    |     off    |     off    |     off    |     off    | Activates Test Mode |
+|    **ON**   |     **ON**    |     off    |     off    |     off    |     off    |     off    |     off    | Activates Timer Mode |
 |     off    |     off    |     off    |     off    |     off    |     off    |     off    |    **ON**   |          1          |
 |     off    |     off    |     off    |     off    |     off    |     off    |    **ON**   |     off    |          2          |
 |     off    |     off    |     off    |     off    |     off    |     off    |    **ON**   |    **ON**   |          3          |
@@ -64,6 +65,14 @@ Somewhat interesting is the test mode option seen in the table above. This is a 
 
 1. Remove all power from the sign
 2. Set the dipswitches to test mode as indicated above
+3. Apply power to the sign (24vDC and 12vDC to appropriate connections)
+
+##### Timer Mode
+
+A mode that counts up in seconds starting at 00:00:00. 
+
+1. Remove all power from the sign
+2. Set the dipswitches to timer mode as indicated above
 3. Apply power to the sign (24vDC and 12vDC to appropriate connections)
 
 #### Protocol Information
